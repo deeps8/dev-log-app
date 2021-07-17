@@ -1,0 +1,54 @@
+<div class="auth-block">
+  <div class="logo-block">
+    <h1>DEVLOG</h1>
+    <h4> <span >Code</span> and <span>Help</span> people to build.</h4>
+    <img src="../../../assets/svg/dev.svg" alt="dev">
+  </div>
+
+  <!-- Lofon form -->
+  <div class="form-block">
+    <ng-container *ngIf="type;else register" >
+      <form (ngSubmit)="loginUser(loginForm)" #loginForm="ngForm">
+        <h2>Welcome</h2>
+        <p>Add your credentials and Login !!</p>
+        <div class="input-block">
+          <p>🧑 Username</p>
+          <input type="text" name="username">
+        </div>
+        <div class="input-block">
+          <p>🔒 Password</p>
+          <input type="password" name="password">
+        </div>
+        <button type="submit" mat-flat-button color="primary" fill="block" >Login</button>
+        <p class="if" >Not have an account ? <a [routerLink]="['/auth','register']" >Register</a> </p>
+      </form>
+    </ng-container>
+
+    <!-- register form -->
+    <ng-template #register>
+      <form (ngSubmit)="loginUser(loginForm)" #loginForm="ngForm">
+        <h2>Welcome</h2>
+        <p>Add your credentials and create an account !!</p>
+        <div class="input-block" style="display: flex;">
+          <img class="upload-profile" (click)="profile.click()"  [src]="filepath" alt="profile">
+          <input type="file" accept="image/*" name="profile" (change)="preview($event)" style="display: none;" #profile>
+          <button class="upload-btn" mat-flat-button color="accent" (click)="profile.click()" >choose profile</button>
+        </div>
+        <div class="input-block">
+          <p>🧑 Username</p>
+          <input type="text" name="username">
+        </div>
+        <div class="input-block">
+          <p>📧 Email</p>
+          <input type="email" name="email">
+        </div>
+        <div class="input-block">
+          <p>🔒 Password</p>
+          <input type="password" name="password">
+        </div>
+        <button type="submit" mat-flat-button color="primary" fill="block" >Register</button>
+        <p class="if" >Already have an account ? <a [routerLink]="['/auth','login']" >Login</a> </p>
+      </form>
+    </ng-template>
+  </div>
+</div>

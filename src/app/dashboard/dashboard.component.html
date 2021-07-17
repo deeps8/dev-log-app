@@ -1,0 +1,17 @@
+<!-- todo
+    - change the quill-view height if you are previewing the post
+    - full display of the editor (height)
+    - increase the line-height bwt text in editor
+    - increase the size of the font, not too big
+    - style the toolbar of editor and inc size of icons
+    - minimise icons as u can
+    - iframe
+    - or bhi hai kafi.
+-->
+
+<quill-editor  [(ngModel)]="html" trackChanges="all" (onEditorChanged)="changedEditor($event)" [modules]="tools" format="object" [styles]="{height: 'calc(50vh - 125px)'}"
+  placeholder="Insert text here ..." useBr=true ng-invalid [required]="true">
+</quill-editor>
+
+<quill-view [content]="html" format="object" theme="bubble" [modules]="tools"></quill-view>
+<!-- <pre>{{ html | json }}</pre> -->

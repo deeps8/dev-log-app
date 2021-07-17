@@ -1,1 +1,123 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '~@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+$prime-color: #F70630;
+
+$my-primary: (
+   50: #ffeaef,
+  100: #ffcbd3,
+  200: #f4959b,
+  300: #ec6a74,
+  400: #f84252,
+  500: #F70630,
+  600: #F70630,
+  700: #dd0030,
+  800: #d00028,
+  900: #c2001b,
+  A100: #ff8a80,
+  A200: #ff5252,
+  A400: #ff1744,
+  A700: #d50000,
+  contrast: (
+    50: #141414,
+    100: #141414,
+    200: #141414,
+    300: #141414,
+    400: #141414,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff
+  )
+);
+
+$my-secondary: (
+  50: #dffff2,
+  100: #DEF1FF,
+  200: #DEF1FF,
+  300: #DEF1FF,
+  400: #DEF1FF,
+  500: #DEF1FF,
+  600: #DEF1FF,
+  700: #DEF1FF,
+  800: #DEF1FF,
+  900: #DEF1FF,
+  contrast: (
+    50: #445168,
+    100: #445168,
+    200: #445168,
+    300: #445168,
+    400: #445168,
+    500: #445168,
+    600: #445168,
+    700: #445168,
+    800: #445168,
+    900: #445168
+  )
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+// $dev-blog-primary: mat.define-palette(mat.$indigo-palette);
+// $dev-blog-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$dev-blog-primary: mat.define-palette($my-primary);
+$dev-blog-accent: mat.define-palette($my-secondary);
+
+
+// The warn palette is optional (defaults to red).
+$dev-blog-warn: mat.define-palette(mat.$red-palette);
+
+//typography
+$my-typography: mat.define-typography-config(
+    $font-family: '"Cabin", sans-serif',
+    $display-4:     mat.define-typography-level(115px, 115px, 500, $letter-spacing: 0.05em),
+    $display-3:     mat.define-typography-level(58px, 58px, 500, $letter-spacing: 0.02em),
+    $display-2:     mat.define-typography-level(48px, 50px, 500, $letter-spacing: 0.005em),
+    $display-1:     mat.define-typography-level(35px, 40px, 500),
+    $headline:      mat.define-typography-level(25px, 35px, 500),
+    $title:         mat.define-typography-level(25px, 35px, 500),
+    $subheading-2:  mat.define-typography-level(18px, 28px, 500),
+    $subheading-1:  mat.define-typography-level(15px, 25px, 500),
+    $body-2:        mat.define-typography-level(15px, 25px, 500),
+    $body-1:        mat.define-typography-level(15px, 20px, 500),
+    $caption:       mat.define-typography-level(15px, 20px, 500),
+    $button:        mat.define-typography-level(15px, 15px, 500, $letter-spacing: 00.02em)
+  );
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$dev-blog-theme: mat.define-light-theme((
+  color: (
+    primary: $dev-blog-primary,
+    accent: $dev-blog-accent,
+    warn: $dev-blog-warn,
+  ),
+  typography: $my-typography
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($dev-blog-theme);
+
 /* You can add global styles to this file, and also import other style files */
+html,body {
+  margin: 0;
+  font-family: 'Cabin', sans-serif;
+  // background-color: #def1ff6e;
+  height: 100%;
+}
+// button{
+//   box-shadow: 2px 2px 0px #141414 !important;
+// }

@@ -1,0 +1,44 @@
+
+.menu-btn {
+    display: none;
+    margin: 0;
+}
+
+.header {
+  padding: 0 1%;
+  position: fixed;
+  top: 0;
+  height: 50px;
+  left: 0;
+  right: 0;
+  background-color: unset;
+  .toolbar-spacer {
+    flex: 1 1 auto;
+  }
+  .nav-btns{
+    flex: 1;
+    .btns{
+      display: flex;
+      flex-direction: row-reverse;
+      button{
+        margin-left: 2%;
+      }
+    }
+  }
+  .heading {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: monospace;
+    background: #141414;
+    padding: 1px 10px;
+    border-radius: 3px;
+    color: white;
+    text-decoration: none;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .menu-btn {
+    display: block;
+  }
+}

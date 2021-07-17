@@ -1,4 +1,8 @@
-# DevBlog
+# Dev-Log
+
+A daily log community application for developers to post their content and can create Log-List/Series tutorials or anything they want.
+Follow topics based on your preferences and get daily updates about them and have a discussion with community.
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.5.
 

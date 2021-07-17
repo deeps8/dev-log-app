@@ -1,0 +1,110 @@
+$prime-color : #f70630;
+$dark-color : #141414;
+$accent-color : #9bcff5;
+.auth-block{
+  height: 100%;
+  // overflow: hidden;
+  margin: -1%;
+  padding: 1%;
+  display: flex;
+  a{
+    color: $prime-color;
+    font-weight: 600;
+  }
+  .form-block,.logo-block{
+    flex: 1;
+    padding: 2% 2%;
+  }
+  .logo-block{
+    h1{
+      width: fit-content;
+      padding: 2% 3%;
+      color: white;
+      font-size: 45px;
+      border-radius: 3px;
+      font-family: monospace;
+      background: $dark-color;
+      box-shadow: 5px -5px 0 $prime-color, -5px 5px 0 $accent-color;
+    }
+    span{
+      color: $prime-color;
+    }
+    img{
+      width: 70%;
+    }
+  }
+
+  .form-block{
+    padding-bottom: 50px;
+    form{
+      width: 50%;
+      margin: 0 auto;
+    p{
+      color: grey;
+      margin: 0;
+      font-size: 15px;
+    }
+    h2{
+      margin: 0;
+    }
+    }
+    .input-block{
+      margin-top: 25px;
+      p{
+        margin: 5px 2px;
+        font-size: 17px;
+        font-weight: bold;
+        color: #141414;
+      }
+      input{
+        background: #def1ff;
+        border: 0px solid #141414;
+        border-radius: 5px;
+        padding: 0 3%;
+        width: 94%;
+        height: 42px;
+        font-family: inherit;
+      }
+    }
+    button{
+      width: 100%;
+      margin: 20px 0;
+      height: 42px;
+    }
+  }
+  .upload-profile{
+    width: 60px;
+    height: 60px;
+    padding: 2px;
+    float: left;
+    border-radius: 100%;
+    border: 2px dashed $dark-color;
+    cursor: pointer;
+  }
+  .upload-profile:hover{
+    opacity: 0.9;
+  }
+  .upload-btn{
+    // width: auto !important;
+    margin: 10px !important;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .form-block{
+    form{
+      width: 90% !important;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .auth-block{
+    display: block;
+    .logo-block{
+      img{
+        display: none;
+      }
+    }
+  }
+}
