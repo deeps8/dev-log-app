@@ -47,23 +47,43 @@ $accent-color : #9bcff5;
     h2{
       margin: 0;
     }
+    .error-msg{
+      background-color: #ff00004f;
+      padding: 2px 5px;
+      border-radius: 2px;
+      color: red;
+      margin-top: 20px;
+    }
     }
     .input-block{
       margin-top: 25px;
+      position: relative;
       p{
         margin: 5px 2px;
         font-size: 17px;
         font-weight: bold;
-        color: #141414;
+        color: $dark-color;
       }
       input{
         background: #def1ff;
-        border: 0px solid #141414;
-        border-radius: 5px;
+        border: 0;
+        outline: unset;
+        // box-shadow: 0 1px 0 0 $dark-color,0 -1px 0 0 $dark-color,-1px 0 0 0 $dark-color,1px 0 0 0 $dark-color;
+        border-radius: 3px;
         padding: 0 3%;
         width: 94%;
         height: 42px;
         font-family: inherit;
+      }
+      .error{
+        box-shadow: 0 1px 0 0 red,0 -1px 0 0 red,-1px 0 0 0 red,1px 0 0 0 red;
+      }
+      span{
+        position: absolute;
+        bottom: 0px;
+        right: 3px;
+        font-size: 12px;
+        color: red
       }
     }
     button{
@@ -72,17 +92,23 @@ $accent-color : #9bcff5;
       height: 42px;
     }
   }
-  .upload-profile{
-    width: 60px;
-    height: 60px;
-    padding: 2px;
-    float: left;
+  .profile{
+
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    flex: none;
     border-radius: 100%;
-    border: 2px dashed $dark-color;
+    border: 2px dashed #141414;
     cursor: pointer;
-  }
-  .upload-profile:hover{
-    opacity: 0.9;
+    .upload-profile{
+      width: 98%;
+      height: 98%;
+      border-radius: 100%;
+    }
+    .upload-profile:hover{
+      opacity: 0.9;
+    }
   }
   .upload-btn{
     // width: auto !important;

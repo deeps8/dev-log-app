@@ -8,16 +8,39 @@
   <!-- Lofon form -->
   <div class="form-block">
     <ng-container *ngIf="type;else register" >
-      <form (ngSubmit)="loginUser(loginForm)" #loginForm="ngForm">
+      <form (ngSubmit)="getLoginData(loginForm)"  [formGroup]="loginForm" novalidate >
         <h2>Welcome</h2>
         <p>Add your credentials and Login !!</p>
+        <p class="error-msg"*ngIf="errorMsg" >{{errorMsg}}</p>
         <div class="input-block">
           <p>🧑 Username</p>
-          <input type="text" name="username">
+          <input
+            formControlName="username"
+            required minlength="6" maxlength="25" autocomplete="name"
+            type="text" name="username"
+            [ngClass]="{error: loginForm.get('username')?.invalid && loginForm.get('username')?.touched}"
+            >
+          <span *ngIf=" inputFieldValidation(loginForm,'username','required') && loginForm.get('username')?.touched" >
+            required
+          </span>
+          <span *ngIf=" inputFieldValidation(loginForm,'username','minlength')" >
+            too small
+          </span>
         </div>
         <div class="input-block">
           <p>🔒 Password</p>
-          <input type="password" name="password">
+          <input
+            formControlName="password"
+            required minlength="8" maxlength="25" autocomplete="new-password"
+            type="password" name="password"
+            [ngClass]="{error: loginForm.get('password')?.invalid && loginForm.get('password')?.touched}"
+            >
+          <span *ngIf=" inputFieldValidation(loginForm,'password','required') && loginForm.get('password')?.touched" >
+            required
+          </span>
+          <span *ngIf=" inputFieldValidation(loginForm,'password','minlength')" >
+            too small
+          </span>
         </div>
         <button type="submit" mat-flat-button color="primary" fill="block" >Login</button>
         <p class="if" >Not have an account ? <a [routerLink]="['/auth','register']" >Register</a> </p>
@@ -26,26 +49,66 @@
 
     <!-- register form -->
     <ng-template #register>
-      <form (ngSubmit)="loginUser(loginForm)" #loginForm="ngForm">
+      <form (ngSubmit)="getRegData(regForm)" [formGroup]="regForm" >
         <h2>Welcome</h2>
         <p>Add your credentials and create an account !!</p>
+        <p class="error-msg"*ngIf="errorMsg" >{{errorMsg}}</p>
         <div class="input-block" style="display: flex;">
-          <img class="upload-profile" (click)="profile.click()"  [src]="filepath" alt="profile">
+          <div class="profile" (click)="profile.click()" >
+            <img class="upload-profile"  [src]="filepath" alt="profile">
+          </div>
           <input type="file" accept="image/*" name="profile" (change)="preview($event)" style="display: none;" #profile>
           <button class="upload-btn" mat-flat-button color="accent" (click)="profile.click()" >choose profile</button>
         </div>
+
         <div class="input-block">
           <p>🧑 Username</p>
-          <input type="text" name="username">
+          <input
+            formControlName="username"
+            required minlength="6" maxlength="25" autocomplete="name"
+            type="text" name="username"
+            [ngClass]="{error: regForm.get('username')?.invalid && regForm.get('username')?.touched}"
+            >
+          <span *ngIf=" inputFieldValidation(regForm,'username','required') && regForm.get('username')?.touched" >
+            required
+          </span>
+          <span *ngIf=" inputFieldValidation(regForm,'username','minlength')" >
+            too small
+          </span>
         </div>
         <div class="input-block">
           <p>📧 Email</p>
-          <input type="email" name="email">
+          <input
+            formControlName="email"
+            required autocomplete="email"
+            type="email" name="email"
+            pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+            [ngClass]="{error: regForm.get('email')?.invalid && regForm.get('email')?.touched}"
+            >
+          <span *ngIf=" inputFieldValidation(regForm,'email','required') && regForm.get('email')?.touched" >
+            required
+          </span>
+          <span *ngIf=" inputFieldValidation(regForm,'email','pattern')" >
+            invalid
+          </span>
         </div>
         <div class="input-block">
           <p>🔒 Password</p>
-          <input type="password" name="password">
+          <input
+            formControlName="password"
+            required minlength="8" maxlength="25" autocomplete="new-password"
+            type="password" name="password"
+            [ngClass]="{error: regForm.get('password')?.invalid && regForm.get('password')?.touched}"
+            >
+          <span *ngIf=" inputFieldValidation(regForm,'password','required') && regForm.get('password')?.touched" >
+            required
+          </span>
+          <span *ngIf=" inputFieldValidation(regForm,'password','minlength')" >
+            too small
+          </span>
         </div>
+
+
         <button type="submit" mat-flat-button color="primary" fill="block" >Register</button>
         <p class="if" >Already have an account ? <a [routerLink]="['/auth','login']" >Login</a> </p>
       </form>
